@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .buttons {
+            margin: 20px 0;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #b4d2f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #397fca;
+        }
+
+        #result {
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h3>Simple Calculator</h3>
+        <input type="number" id="input1" placeholder="Input 1">
+        <input type="number" id="input2" placeholder="Input 2">
+        <div class="buttons">
+            <button onclick="performOperation(add)">Add</button>
+            <button onclick="performOperation(subtract)">Subtract</button>
+            <button onclick="performOperation(multiply)">Multiply</button>
+            <button onclick="performOperation(divide)">Divide</button>
+        </div>
+        <p id="result">Result: </p>
+    </div>
+
+    <script>
+    
+        function add(a, b, callback) {
+            callback(a + b);
+        }
+
+        function subtract(a, b, callback) {
+            callback(a - b);
+        }
+
+        function multiply(a, b, callback) {
+            callback(a * b);
+        }
+
+        function divide(a, b, callback) {
+            if (b === 0) {
+                alert("Cannot divide by zero");
+                return;
+            }
+            callback(a / b);
+        }
+
+        function performOperation(operation) {
+            const input1 = parseFloat(document.getElementById('input1').value);
+            const input2 = parseFloat(document.getElementById('input2').value);
+
+            if (isNaN(input1) || isNaN(input2)) {
+                alert("Please enter valid numbers");
+                return;
+            }
+
+            operation(input1, input2, function(result) {
+                document.getElementById('result').textContent = 'Result: ' + result;
+            });
+        }
+    </script>
+</body>
+</html>
