@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Task 2</title>
+</head>
+<body>
+    <!-- TASK 1 -->
+    <h2>1. Input DOB and Show Age</h2>
+    <input type="date" id="dob" placeholder="Enter your DOB">
+    <button onclick="calculateAge()">Calculate Age</button>
+    <p id="age"></p>
+    <script>
+        function calculateAge() {
+            let dob = new Date(document.getElementById('dob').value);
+            let today = new Date();
+            let age = today.getFullYear() - dob.getFullYear();
+            let monthDiff = today.getMonth() - dob.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+            document.getElementById('age').innerText = `You are ${age} years old.`;
+        }
+
+    </script>
+    <!-- TASK 2 -->
+    <h1>Electricity Bill Calculator</h1>
+    <form>
+        <h3>Enter the electricity units consumed:</h3> <input type="number" id="units" min="0" placeholder="Enter units consumed"> 
+        <button onclick="calculateBill()">Calculate Electricity Bill</button>
+
+        <p id="billResult"></p>
+    </form>
+    <script>
+        function calculateBill() {
+            const units = parseInt(document.getElementById('units').value);
+            if (isNaN(units) || units < 0) {
+                alert('Please enter a valid number of units.');
+                return;
+            }
+            let bill = 0;
+            if (units <= 200) {
+                bill = 0;
+            } else if (units <= 500) {
+                bill = (units - 200) * 1;
+            } else if (units <= 900) {
+                bill = (300 * 1) + (units - 500) * 2;
+            } else {
+                bill = (300 * 1) + (400 * 2) + (units - 900) * 3;
+            }
+            document.getElementById('billResult').textContent = `Total Electricity Bill:₹${bill}`;
+        }
+    </script>
+    <!-- TASK 3 -->
+    <h1> Parking Stay Time</h1>
+    <p>Enter Start Time (H1 M1) and End Time (H2 M2):</p>
+    <input type="number" id="h1" placeholder="H1"> 
+    <input type="number" id="m1" placeholder="M1"> 
+    <br>
+    <br>
+    <input type="number" id="h2" placeholder="H2"> 
+    <input type="number" id="m2" placeholder="M2">
+    <br>
+    <br>
+    <button onclick="calculateParkingTime()">Calculate Parking Time</button>
+    <p id="parkingTime"></p>
+    <script>
+        function calculateParkingTime() {
+            let h1 = parseInt(document.getElementById('h1').value);
+            let m1 = parseInt(document.getElementById('m1').value);
+            let h2 = parseInt(document.getElementById('h2').value);
+            let m2 = parseInt(document.getElementById('m2').value);
+
+            const startMinutes = h1 * 60 + m1;
+            const endMinutes = h2 * 60 + m2;
+            let totalMinutes = endMinutes - startMinutes;
+
+            if (totalMinutes < 0) {
+                totalMinutes += 24 * 60; // Adjust for times past midnight
+            }
+
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+            document.getElementById('parkingTime').innerText = `Total time stayed: ${hours} hour(s) and ${minutes} minute(s).`;
+        }
+
+    </script>
+    <!-- TASK 4 -->
+         <!--Task3-->
+      <h1>Showing The Date</h1>
+     <script>
+        let currentDate = new Date();
+        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        let formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+        console.log(formattedDate);
+
+    </script> 
+
+</body>
+</html>
