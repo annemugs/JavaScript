@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+      #nmError,#ageError{
+        color: red;
+      }
+    </style>
+</head>
+<body>
+    <input type="text" name="" placeholder="Name here"id="name">
+    <div id="nmError"></div>
+    <input type="number" name="" placeholder="age" id="age">
+    <div id="ageError"></div>
+
+    <input type="button"  onclick="validate()" value="Submit">
+    <input type="button"  onclick="reset()" value="reset">
+
+    <script>
+        var nm= document.getElementById("name").value;
+        var age= document.getElementById("age").value;
+        function validate(){
+            if(nm.length<7){
+               document.getElementById("nmError").innerHTML="Atleast & alphabets"
+            }
+            if(age<22||age>32){
+                document.getElementById("nmError").innerHTML="enter valid age" 
+        }
+        }
+
+        function reset(){
+            var nm= document.getElementById("name").value="";
+            var age= document.getElementById("age").value="";
+        }
+    </script>
+</body>
+</html>
