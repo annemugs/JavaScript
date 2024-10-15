@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Population Changes</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart" width="200" height="200"></canvas>
+  <script>
+    
+    var labels = ['Libya', 'Phillipines', 'Qatar', 'Egypt', 'Mali'];
+    var data = [10000000, 15000000, 8000000, 12000000, 20000000];
+    var data2 = [12000000, 17000000, 9000000, 14000000, 22000000];
+
+   
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Population in 2023',
+          data: data,
+          backgroundColor: 'red',
+          borderWidth: 1
+        }, {
+          label: 'Population in 2024',
+          data: data2,
+          backgroundColor: 'blue',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
