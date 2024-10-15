@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+</head>
+<body>
+    <canvas id="myChart" style="width:100%;max-width:500px"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<script>
+    var
+    xValues=["Anesu","Owen","Martin","Khushi","Aditi"]
+    var yValues=[80,92,81,60,73]
+    var barColors=["red","green","yellow","purple","blue"]
+    new Chart("myChart",{
+        type:"bar",
+        data:{
+            labels:xValues,
+            datasets:[{
+                label:"Class-9 Score",
+                backgroundColor:barColors,
+                data:yValues
+            }]
+        },
+        options:{
+            title:{
+                display:true,
+                text:"Result"
+            }
+        }
+    });
+</script>
+</body>
+</html>

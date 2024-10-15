@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Score Line Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart" width="400" height="200"></canvas>
+  <div id="scores"></div>
+  <script>
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Team A',
+          data: [],
+          borderColor: 'blue',
+          fill: false
+        }, {
+          label: 'Team B',
+          data: [],
+          borderColor: 'red',
+          fill: false
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    
+    let teamA = 0;
+    let teamB = 0;
+    let over = 0;
+    var maxOvers = 20;
+
+    setInterval(() => {
+      
+      if (over < maxOvers) {
+        teamA += Math.random() * 10;
+        teamB += Math.random() * 10;
+        over++;
+
+       
+        myChart.data.labels.push(`Over ${over}`);
+        myChart.data.datasets[0].data.push(teamA);
+        myChart.data.datasets[1].data.push(teamB);
+        myChart.update();
+
+
+        document.getElementById('scores').innerHTML = `
+          Team A: ${teamA} | Team B: ${teamB}
+        `;
+      } else {
+        
+        clearInterval(interval);
+        document.getElementById('scores').innerHTML = `
+          **Match Over!**
+          Team A: ${teamA} | Team B: ${teamB}
+        `;
+      }
+    }, 1000);
+
+    var interval = setInterval(() => {}, 0);
+  </script>
+</body>
+</html>
