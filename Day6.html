@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Box Copy Example</title>
+    <style>
+        select {
+            width: 200px;
+            height: 200px;
+        }
+        input{
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Copy Items</h2>
+<select id="sourceList" multiple>
+    <option>Pen</option>
+    <option>Ink</option>
+    <option>Book</option>
+</select>
+
+<button onclick="purchase()">></button>
+
+<select id="destinationList" multiple></select>
+<br/>
+<br/>
+<br>
+Quantity<input type="text" id="count"/>
+Bill<input type="text" id="bill"/>
+<script>
+    var b=0;
+    function purchase() {
+        var sourceList = document.getElementById('sourceList');
+        var destinationList = document.getElementById('destinationList');
+        var newItem = document.createElement('option');
+            newItem.text = sourceList.options[sourceList.selectedIndex].text;
+            destinationList.add(newItem);
+            count.value=destinationList.length;
+            if(newItem.text=="Pen")
+        
+                b=b+10;
+
+            else if(newItem.text=="Ink")
+            b=b+20
+            else if(newItem.text=="Book")
+        
+                b=b+30;
+        
+            bill.value=b;
+            
+    }
+</script>
+</body>
+</html>
+
